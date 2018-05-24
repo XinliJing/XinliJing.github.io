@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[对python函数参数的一些理解]]></title>
+    <url>%2F2018%2F05%2F24%2F%E5%AF%B9python%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[函数参数值传递 为什么如此顺口… 之前在学习 C, C++ 时，对函数进行参数传递时通常是深拷贝，即另外开辟空间对所传入实际参数进行复制，得到形式参数。此时在函数内部对形式参数进行改变并不会影响实际参数。 而如果需要在函数内部通过形式参数来改变实际参数，则需要引入指针进行操作。 现在函数参数的传递与修改在 python 中，一切皆对象。而对象又分为可变 (immutable) 对象与不可变 (immutable) 对象。 不可变对象，该对象所指向的内存中的值不能被改变。当改变某个变量时候，由于其所指的值不能被改变，相当于把原来的值复制一份后再改变，这会开辟一个新的地址，变量再指向这个新的地址。 可变对象，该对象所指向的内存中的值可以被改变。变量（准确的说是引用）改变后，实际上是其所指的值直接发生改变，并没有发生复制行为，也没有开辟新的出地址，通俗点说就是原地改变。 在 python 中，int, float, str,tuple均为不可变对象；而 dict, list, set 均为可变对象。 在进行参数传递时，若所传参数为不可变对象，则进行深拷贝传递。若所传对象为不可变对象，则进行浅拷贝传递，即传递的是实际参数的引用，此时便可以在函数内部通过修改形式参数来改变实际参数了。 而如果要对可变对象进行深拷贝传递，则必须在传递时创建一个明确的可变对象的拷贝。12345678910def change(a,b): a = 2 b[0] = 'spam'x = 1l = [1,2]change(x,l[:])print(x,l)1 [1, 2] 或传递后在函数内部进行拷贝。这样可以不改变传入的对象，函数调用看上去没有变化。1234567891011def change(a,b): b = b[:] a = 2 b[0] = 'spam'x = 1l = [1,2]change(x,l)print(x,l)1 [1, 2] 函数参数的匹配在默认情况下，参数是通过其位置进行匹配的。即123456def f(a,b,c): print(a,b,c)f(1,2,3)1 2 3 python中还可以使用基于关键字的参数匹配形式。即123456def f(a,b,c): print(a,b,c)f(c=3,a=1,b=2)1 2 3 在一个调用中混合使用基于位置的参数和基于关键字的参数也可以。即123456def f(a,b,c): print(a,b,c)f(1,c=3,b=2)1 2 3 默认参数形式。默认参数允许创建函数可选的参数，如果没有传入值的话，在函数运行前，参数就被赋予了默认值。即12345678def f(a,b=2,c=3): print(a,b,c)f(1)1 2 3f(a=1)1 2 3 还有一种关键字和默认参数一起使用的情况。即123456def f(a,b=2,c=3): print(a,b,c)f(1,c=6)1 2 6 *与**函数定义中*和**符号出现在函数定义的参数中时，表示任意数目参数收集。 *是用元组的形式收集不匹配的位置参数。即123456def f(a,*args): print(args)f(1,2,3,4) (2, 3, 4) **只对关键字参数有效。即123456def f(**kargs): print(kargs)f(a=1,b=2)&#123;'b': 2, 'a': 1&#125; 在这种情况下，**允许将关键字参数转化为字典，能够在之后使用键调用来进行步进或字典迭代。 例： 在函数头部混合一般参数、*以及**的调用方式。123456def f(a, *pargs, **kargs): print(a,pargs,kargs)f(1,2,3,x=4,y=5)1 (2, 3) &#123;'x': 4, 'y': 5&#125; 函数调用中与函数定义中相反，在函数调用中使用*或**会解包参数的集合。 在调用函数时使用*解包一个元组1234567def func(a,b,c,d): print(a,b,c,d)args = (1,2,3,4)func(*args)1 2 3 4 在调用函数时使用**解包一个字典1234567def func(a,b,c,d): print(a,b,c,d)kargs = &#123;'a':1, 'b':2, 'c':3, 'd':4&#125;func(**kargs)1 2 3 4 例： 在函数调用中混合一般参数、*以及**的方式。123456789def func(a,b,c,d,e,f): print(a,b,c,d,e,f)args = (2, 3)kargs = &#123;'d': 4, 'e': 5&#125;func(1, *args, f=6, **kargs)1 2 3 4 5 6 结语每一个看上去都不是很复杂，而且虽然种类较多但也不难理解。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>参数传递</tag>
+        <tag>对象</tag>
+        <tag>深拷贝</tag>
+        <tag>浅拷贝</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[387.字符串中的第一个唯一字符]]></title>
     <url>%2F2018%2F05%2F24%2F387-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6%2F</url>
     <content type="text"><![CDATA[题目给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。 代码123456789101112131415161718192021222324252627282930class Solution: def firstUniqChar(self, s): """ :type s: str :rtype: int """ # listS = list(s) # judge = [] # for i in range(len(listS)): # judge = s[0:i] + s[i+1:] # if s[i] not in judge: # return i # return -1 # 建立哈希表，存储每个字符并统计其出现的次数 # hashMap = &#123;&#125; # for item in s: # if item in hashMap: # hashMap[item] = hashMap[item]+1 # else: # hashMap[item] = 1 # size = len(s) # for i in range(size): # if 1 == hashMap[s[i]]: # return i # return -1 lowercase = string.ascii_lowercase # string.ascii_lowercase返回小写字母 L_index = [s.index(label) for label in lowercase if s.count(label) == 1] # s.count(label) 返回label字符串在s字符串中出现的次数 return min(L_index) if len(L_index) else -1 注意1.string.ascii_lowercase返回所有小写字母 2.str.count(sub, start= 0,end=len(string))返回子字符串在字符串中出现的次数 sub – 搜索的子字符串 start – 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。 end – 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。 3.str.index(sub, beg=0, end=len(string))如果包含子字符串返回开始的索引值，否则抛出异常。 而·str.find(sub, beg=0, end=len(string))方法如果sub不在字符串中会返回-1。 sub – 指定检索的子字符串 beg – 开始索引，默认为0。 end – 结束索引，默认为字符串的长度。 4.python中的dict默认采用hashmap存储结构，因此查找效率很高。 5.variable == constant这种写法漏写一个=时会成为正确的赋值表达式，从而可能引起程序的逻辑错误；而使用constant == variable如果漏写一个=会产生语法错误，可以避免产生逻辑错误。]]></content>
