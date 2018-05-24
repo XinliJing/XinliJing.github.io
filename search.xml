@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[387.字符串中的第一个唯一字符]]></title>
+    <url>%2F2018%2F05%2F24%2F387-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[题目给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。 代码123456789101112131415161718192021222324252627282930class Solution: def firstUniqChar(self, s): """ :type s: str :rtype: int """ # listS = list(s) # judge = [] # for i in range(len(listS)): # judge = s[0:i] + s[i+1:] # if s[i] not in judge: # return i # return -1 # 建立哈希表，存储每个字符并统计其出现的次数 # hashMap = &#123;&#125; # for item in s: # if item in hashMap: # hashMap[item] = hashMap[item]+1 # else: # hashMap[item] = 1 # size = len(s) # for i in range(size): # if 1 == hashMap[s[i]]: # return i # return -1 lowercase = string.ascii_lowercase # string.ascii_lowercase返回小写字母 L_index = [s.index(label) for label in lowercase if s.count(label) == 1] # s.count(label) 返回label字符串在s字符串中出现的次数 return min(L_index) if len(L_index) else -1 注意1.string.ascii_lowercase返回所有小写字母 2.str.count(sub, start= 0,end=len(string))返回子字符串在字符串中出现的次数 sub – 搜索的子字符串 start – 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。 end – 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。 3.str.index(sub, beg=0, end=len(string))如果包含子字符串返回开始的索引值，否则抛出异常。 而·str.find(sub, beg=0, end=len(string))方法如果sub不在字符串中会返回-1。 sub – 指定检索的子字符串 beg – 开始索引，默认为0。 end – 结束索引，默认为字符串的长度。 4.python中的dict默认采用hashmap存储结构，因此查找效率很高。 5.variable == constant这种写法漏写一个=时会成为正确的赋值表达式，从而可能引起程序的逻辑错误；而使用constant == variable如果漏写一个=会产生语法错误，可以避免产生逻辑错误。]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[7.反转整数]]></title>
     <url>%2F2018%2F05%2F23%2F7-%E5%8F%8D%E8%BD%AC%E6%95%B4%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目给定一个 32 位有符号整数，将整数中的数字进行反转。 代码123456789101112131415class Solution: def reverse(self, x): """ :type x: int :rtype: int """ if x &gt;= 0: x = int(str(x)[::-1]) else: x = -int(str(x)[:-len(str(x)):-1]) if x &gt;= -2**31 and x &lt;= 2**31-1: return x else: return 0 注意1.与matlab使用^不同，python中表示x的y次幂使用** 2.将去掉符号的整数转化为字符串后按照反转字符串进行处理 3.对[::]的进一步理解]]></content>
