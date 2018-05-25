@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[242.有效的字母异位词]]></title>
     <url>%2F2018%2F05%2F25%2F242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%2F</url>
-    <content type="text"><![CDATA[题目给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的一个字母异位词。字母异位词是什么鬼 字母异位词：字符串中字母相同，位置不同。(一点肤浅的理解) 代码1234567891011121314151617181920class Solution: def isAnagram(self, s, t): """ :type s: str :type t: str :rtype: bool """ hashmap1 = &#123;&#125; hashmap2 = &#123;&#125; for x in s: if x in hashmap1: hashmap1[x] += 1 else: hashmap1[x] = 1 for y in t: if y in hashmap2: hashmap2[y] += 1 else: hashmap2[y] = 1 return hashmap1 == hashmap2 总结 开两个字典，然后比较一下它们是否相同。与387.方法相似 emm…开一个字典好像就能完事儿，一个加一个减，最后如果字典为空说明它们互为字母异位词。]]></content>
+    <content type="text"><![CDATA[题目给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的一个字母异位词。字母异位词是什么鬼 字母异位词：字符串中字母相同，位置不同。(一点肤浅的理解) 代码1234567891011121314151617181920class Solution: def isAnagram(self, s, t): """ :type s: str :type t: str :rtype: bool """ hashmap1 = &#123;&#125; hashmap2 = &#123;&#125; for x in s: if x in hashmap1: hashmap1[x] += 1 else: hashmap1[x] = 1 for y in t: if y in hashmap2: hashmap2[y] += 1 else: hashmap2[y] = 1 return hashmap1 == hashmap2 总结 开两个字典，然后比较一下它们是否相同。与387.方法相似 emm…开一个字典好像就能完事儿，一个加一个减，最后如果字典为空说明它们互为字母异位词。 用set求二者的无序不重复元素集合，如果不同返回false，如果相同再依次判断每个元素在两个字符串中的数目是否相同，相同返回ture，不同返回false。 all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
