@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[125.验证回文串]]></title>
+    <url>%2F2018%2F05%2F26%2F125-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。 代码12345678910111213141516171819202122232425class Solution: def isPalindrome(self, s): """ :type s: str :rtype: bool """ lowercase = string.ascii_lowercase # uppercase = string.ascii_uppercase digits = string.digits s = s.lower() i = 0 j = len(s)-1 while(i &lt; j): if not (s[i] in lowercase or s[i] in digits): i += 1 elif not (s[j] in lowercase or s[j] in digits): j -= 1 elif s[i] != s[j]: return False else: i += 1 j -= 1 return True 注意1.考虑要全面，每一种情况都要考虑到位。 2.注意对python中自带函数的使用。 改进代码12345678class Solution: def isPalindrome(self, s): """ :type s: str :rtype: bool """ cleanlist = [c for c in s.lower() if c.isalnum()] return cleanlist == cleanlist[::-1] 收获1.要善于从python的特性入手写代码。 2.善于学习其他人的经验。 3.python代码通常比其他语言代码简洁。]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[做志愿者的两天]]></title>
     <url>%2F2018%2F05%2F26%2F%E5%81%9A%E5%BF%97%E6%84%BF%E8%80%85%E7%9A%84%E4%B8%A4%E5%A4%A9%2F</url>
     <content type="text"><![CDATA[第一次做志愿者。 第一天早上开会安排活动，之后选择做为今日头条 AI lab 总监李磊的志愿者，然后就开始了忙碌的两天。 看到嘉宾名单后才去网上了解李磊的，感觉还是很厉害的，然后就想着会不会不太好相处，但随后的两天里觉得人还是很nice的。 常教授想把他挖到学校来，虽然经老师们分析后感觉希望渺茫。 不过现在有了李磊博士的微信，到时候应该可以获得面试机会，至于能不能进头条 AI lab 就要看自己的能力咯。]]></content>
