@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[8.字符串转整数(atoi)]]></title>
+    <url>%2F2018%2F05%2F27%2F8-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B4%E6%95%B0-atoi%2F</url>
+    <content type="text"><![CDATA[题目实现atoi，将字符串转为整数。 在找到第一个非空字符之前，需要移除掉字符串中的空格字符。如果第一个非空字符是正号或负号，选取该符号，并将其与后面尽可能多的连续的数字组合起来，这部分字符即为整数的值。如果第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。 字符串可以在形成整数的字符后面包括多余的字符，这些字符可以被忽略，它们对于函数没有影响。 当字符串中的第一个非空字符序列不是个有效的整数；或字符串为空；或字符串仅包含空白字符时，则不进行转换。 若函数不能执行有效的转换，返回 0。 代码1234567891011121314151617181920212223242526272829303132class Solution: def myAtoi(self, str): """ :type str: str :rtype: int """ sNew = "" flag = 1 flagg = 1 for c in str: if flag == 1: if c == ' ': continue if (c == '+') or (c == '-') or (c in string.digits): flag = 0 else: return 0 if flag == 0 and flagg == 0: if c not in string.digits: break flagg = 0 sNew += c try: istr = int(sNew) except: return 0 if istr &gt; 2**31-1: return 2**31-1 elif istr &lt; -2**31: return -2**31 else: return istr 注意立的flag有点多……]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>字符串转整数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[125.验证回文串]]></title>
     <url>%2F2018%2F05%2F26%2F125-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。 代码12345678910111213141516171819202122232425class Solution: def isPalindrome(self, s): """ :type s: str :rtype: bool """ lowercase = string.ascii_lowercase # uppercase = string.ascii_uppercase digits = string.digits s = s.lower() i = 0 j = len(s)-1 while(i &lt; j): if not (s[i] in lowercase or s[i] in digits): i += 1 elif not (s[j] in lowercase or s[j] in digits): j -= 1 elif s[i] != s[j]: return False else: i += 1 j -= 1 return True 注意1.考虑要全面，每一种情况都要考虑到位。 2.注意对python中自带函数的使用。 改进代码12345678class Solution: def isPalindrome(self, s): """ :type s: str :rtype: bool """ cleanlist = [c for c in s.lower() if c.isalnum()] return cleanlist == cleanlist[::-1] 收获1.要善于从python的特性入手写代码。 2.善于学习其他人的经验。 3.python代码通常比其他语言代码简洁。]]></content>
@@ -34,8 +46,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>哈希表</tag>
         <tag>排序</tag>
+        <tag>哈希表</tag>
       </tags>
   </entry>
   <entry>
@@ -71,8 +83,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>哈希表</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
